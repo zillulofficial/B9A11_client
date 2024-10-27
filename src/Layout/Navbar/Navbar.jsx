@@ -33,8 +33,8 @@ const Navbar = () => {
         <div className='navbar shadow-sm max-w-[1185px] px-4 mx-auto mb-24'>
             <div className='flex-1'>
                 <div className='flex items-center'>
-                    <img className='w-auto h-10 text-primary hover:cursor-pointer' src='https://i.postimg.cc/L6bM4pSC/logo.png' alt='' />
-                    <Link to='/'><span className="font-bold text-2xl ">o r k </span><sub className="text-lg text-[#000000a9] rancho font-bold">Nest</sub></Link>
+                    <img className='w-auto h-10 text-primary hover:cursor-pointer' src='https://i.postimg.cc/GhML5xqS/webLogo.png' alt='' />
+                    <Link to='/'><span className="font-bold text-4xl">o b </span><sub className="text-2xl font-rancho font-bold">Sync</sub></Link>
                 </div>
             </div>
             <div className='flex-none'>
@@ -44,6 +44,9 @@ const Navbar = () => {
                     </li>
                     <li className=" hover:rounded-lg hover:bg-none mx-3">
                         <Link to='/allJobs'><div>All Jobs</div></Link>
+                    </li>
+                    <li className=" hover:rounded-lg hover:bg-none mx-3">
+                        <Link to='/blogs'><div>Blogs</div></Link>
                     </li>
 
                     {

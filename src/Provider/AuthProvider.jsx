@@ -44,32 +44,32 @@ const AuthProvider = ({children}) => {
         setLoader(true)
         return signInWithPopup(auth, githubProvider)
     }
-    useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser)
-            const userEmail= currentUser?.email || user?.email
-            const loggedUser= {email: userEmail}
-            if (currentUser) {
-                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, loggedUser, {withCredentials: true})
-                .then(res =>{
-                    console.log(res.data);
-                })
+    // useEffect(() => {
+    //     const unSubscribe = onAuthStateChanged(auth, currentUser => {
+    //         setUser(currentUser)
+    //         const userEmail= currentUser?.email || user?.email
+    //         const loggedUser= {email: userEmail}
+    //         if (currentUser) {
+    //             axios.post(`${import.meta.env.VITE_API_URL}/jwt`, loggedUser, {withCredentials: true})
+    //             .then(res =>{
+    //                 console.log(res.data);
+    //             })
                 
-                setLoader(false)
-            }
-            else{
-                axios.post(`${import.meta.env.VITE_API_URL}/logout`, loggedUser, {withCredentials: true})
-                .then(res =>{
-                    console.log(res.data);
-                })
+    //             setLoader(false)
+    //         }
+    //         else{
+    //             axios.post(`${import.meta.env.VITE_API_URL}/logout`, loggedUser, {withCredentials: true})
+    //             .then(res =>{
+    //                 console.log(res.data);
+    //             })
                 
-                setLoader(false)
-            }
-        })
-        return () => {
-            unSubscribe()
-        }
-    }, [])
+    //             setLoader(false)
+    //         }
+    //     })
+    //     return () => {
+    //         unSubscribe()
+    //     }
+    // }, [])
 
     const authInfo= {
         user,

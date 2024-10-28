@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
-    const { user, logout } = useContext(AuthContext)
+    const { user, logout } = useAuth()
     const navigate= useNavigate()
     const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
 
@@ -30,7 +30,7 @@ const Navbar = () => {
 
     }
     return (
-        <div className='navbar shadow-sm max-w-[1185px] px-4 mx-auto mb-24'>
+        <div className='navbar shadow-sm max-w-[1185px] px-4 mx-auto '>
             <div className='flex-1'>
                 <div className='flex items-center'>
                     <img className='w-auto h-10 text-primary hover:cursor-pointer' src='https://i.postimg.cc/GhML5xqS/webLogo.png' alt='' />

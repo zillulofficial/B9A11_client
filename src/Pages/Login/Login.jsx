@@ -74,7 +74,7 @@ const Login = () => {
             </div>
             <div className='flex-1'>
                 {/* picture part */}
-                <img className='w-full' src="https://i.postimg.cc/brx7yTjb/login2.png" alt="" />
+                <img className='w-full' src="https://i.postimg.cc/NfhNbmwq/login.jpg" alt="" />
             </div>
         </div>
     );

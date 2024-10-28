@@ -1,17 +1,73 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaEye } from 'react-icons/fa';
 import { IoMdEyeOff } from 'react-icons/io';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { TbBrandGithubFilled } from "react-icons/tb";
-import { VscGithub } from "react-icons/vsc";
+import useAuth from '../../Hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const Login = () => {
+    const { login, googleLogIn, facebookLogIn, githubLogIn, user, loader } = useAuth()
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state || '/';
+    useEffect(()=>{
+        if(user){
+            navigate('/')
+        }
+    },[])
+
     const [showPassword, setShowPassword] = useState(false)
+    const handleSubmit = e => {
+        e.preventDefault()
+        const form = e.target
+        const email = form.email.value
+        const password = form.password.value
+        // console.log(email, password)
+        login(email, password)
+            .then((result) => {
+                const loggedInUser = result.user
+                console.log(loggedInUser);
+                if (result.user) {
+                    navigate(from)
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Logged in successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Okay'
+                    })
+                }
+                console.log(result)
+            })
+            .catch(() => {
+                Swal.fire({
+                    title: 'error!',
+                    text: 'There is an error',
+                    icon: 'error',
+                    confirmButtonText: 'Okay'
+                })
+            })
+    }
+
+    const handleSocialSignIn = (socialProvider) => {
+        socialProvider()
+            .then(result => {
+                if (result.user) {
+                    console.log(result.user)
+                    // axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {email: result?.user?.email})
+                    // .then(res=>{
+                    //     console.log(res.data);
+                    // })
+                    navigate(from)
+                }
+            })
+            .catch(error => console.log(error))
+    }
     return (
         <div className='min-h-screen flex justify-center items-center'>
             {/* content part */}
-            <div class="flex-1">
-                <div class="lg:w-1/2 mb-12 mx-auto">
+            <div className="flex-1">
+                <div className="lg:w-1/2 mb-12 mx-auto">
                     <div className='flex justify-between'>
                         <div className='flex items-center mb-20'>
                             <img className='w-auto h-14 text-primary hover:cursor-pointer' src='https://i.postimg.cc/GhML5xqS/webLogo.png' alt='' />
@@ -24,15 +80,15 @@ const Login = () => {
                         </div>
                     </div>
                     <div>
-                        <h1 class="mt-4 text-[26px] text-[#111111] font-bold font-roboto mb-2">Log In</h1>
+                        <h1 className="mt-4 text-[26px] text-[#111111] font-bold font-roboto mb-2">Log In</h1>
                         <p className='text-lg font-roboto text-[#646464]'>Log in to continue in our website</p>
                     </div>
                 </div>
 
                 {/* input fields */}
                 <div className="mt-8 lg:w-1/2 lg:mt-0 mx-auto">
-                    <form className="w-full lg:max-w-xl">
-                        <div className="relative flex items-center">
+                    <form onSubmit={handleSubmit} className="w-full lg:max-w-xl">
+                        <div className="form-control relative flex items-center">
                             <input type="email" name="email" placeholder="Email address" className="block w-full py-3 text-gray-700 bg-white border-b-[1px]" />
                             <span className="absolute top-3 right-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-[#9c9c9c] text-xl" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -42,7 +98,7 @@ const Login = () => {
 
                         </div>
 
-                        <div className="relative flex items-center mt-4">
+                        <div className="form-control relative flex items-center mt-4">
                             <input type={showPassword ? "text" : "password"} name='password' className="block w-full py-3 text-gray-700 bg-white border-b-[1px]" placeholder="Password" />
                             <span className="absolute top-3 right-4" onClick={() => setShowPassword(!showPassword)}>
                                 {
@@ -53,7 +109,7 @@ const Login = () => {
                         </div>
 
                         {/* Login Button  */}
-                        <div className="mt-8 md:flex md:items-center mb-12">
+                        <div className="form-control mt-8 md:flex md:items-center mb-12">
                             <button className="w-1/3 px-6 py-3 text-lg font-medium font-roboto text-white duration-300 transform bg-[#ff0000] relative inline-flex items-center justify-start overflow-hidden  transition-all group">
                                 <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-red-300 group-hover:-mr-4 group-hover:-mt-4">
                                     <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
@@ -65,9 +121,9 @@ const Login = () => {
 
                         {/* Social Icons */}
                         <div className='lg:w-1/2 mx-auto flex items-center justify-center gap-3 '>
-                                    <p className='bg-[#00ccee] w-10 h-10 rounded-full flex items-center justify-center hover:cursor-pointer hover:border hover:border-[#00ccee] hover:bg-white duration-300'><TbBrandGithubFilled className='text-white text-xl hover:text-[#00ccee]'></TbBrandGithubFilled></p>
-                                    <p className='text-white  font-bold rounded-full duration-300 bg-[#cc3333] w-10 h-10 flex items-center justify-center hover:text-[#cc3333] hover:cursor-pointer hover:border hover:border-[#cc3333] hover:bg-white'>G+</p>
-                                    <p className='text-white text-xl font-bold rounded-full duration-300 bg-[#3b5998] w-10 h-10 flex items-center justify-center hover:text-[#3b5998] hover:cursor-pointer hover:border hover:border-[#3b5998] hover:bg-white'>f</p>
+                                    <p onClick={() => handleSocialSignIn(githubLogIn)} className='bg-[#00ccee] w-10 h-10 rounded-full flex items-center justify-center hover:cursor-pointer hover:border hover:border-[#00ccee] hover:bg-white duration-300'><TbBrandGithubFilled className='text-white text-xl hover:text-[#00ccee]'></TbBrandGithubFilled></p>
+                                    <p onClick={() => handleSocialSignIn(googleLogIn)} className='text-white  font-bold rounded-full duration-300 bg-[#cc3333] w-10 h-10 flex items-center justify-center hover:text-[#cc3333] hover:cursor-pointer hover:border hover:border-[#cc3333] hover:bg-white'>G+</p>
+                                    <p onClick={() => handleSocialSignIn(facebookLogIn)} className='text-white text-xl font-bold rounded-full duration-300 bg-[#3b5998] w-10 h-10 flex items-center justify-center hover:text-[#3b5998] hover:cursor-pointer hover:border hover:border-[#3b5998] hover:bg-white'>f</p>
                         </div>
                     </form>
                 </div>

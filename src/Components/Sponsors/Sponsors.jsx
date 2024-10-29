@@ -11,7 +11,7 @@ const Sponsors = () => {
         'https://felan.ricetheme.com/wp-content/uploads/2024/06/Company-logo-7.svg',
     ];
     return (
-        <div className='max-w-[1185px] mx-auto mb-24 mt-24'>
+        <div className='max-w-[1185px] mx-auto mb-24 md:mt-24'>
             <p className='text-center text-2xl mb-8'>Trusted by thousands of organizations</p>
             <Marquee
                 speed={100}        // Speed of the scroll

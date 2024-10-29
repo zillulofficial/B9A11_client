@@ -13,8 +13,8 @@ const Banner = () => {
         }
     }
     return (
-        <div className="bg-gradient-to-b from-[#0066ff10] to-white min-h-[calc(100vh-250px)]">
-            <div className="max-w-[1185px] mx-auto flex mb-24 pt-32">
+        <div className="bg-gradient-to-b from-[#0066ff10] to-white md:min-h-[calc(100vh-250px)]">
+            <div className="max-w-[1185px] mx-auto flex md:mb-24 pt-16 md:pt-32">
                 {/* text part */}
                 <div className=" flex-1">
                     <p className="mb-4">NO.1 FREELANCE MARKETPLACE</p>

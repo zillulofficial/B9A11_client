@@ -9,7 +9,6 @@ export default {
       fontFamily: {
         rancho: "'Rancho', sans-serif",
         roboto: "'Roboto', sans-serif",
-        dms: "'DM Serif Display', serif",
       }
     },
   },

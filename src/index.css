@@ -9,7 +9,10 @@
 :root {
   font-family: "Cabin", sans-serif;
 }
-
+.dms {
+  font-family: "DM Serif Display", serif;
+  font-style: italic;
+}
 
 /* flipping card CSS */
 

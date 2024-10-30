@@ -3,6 +3,9 @@ import useAuth from "../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Aos from 'aos'
+import { useEffect } from 'react';
+import 'aos/dist/aos.css'
 
 const AddJobPage = () => {
     // const axiosSecure= UseAxiosSecure()
@@ -11,6 +14,11 @@ const AddJobPage = () => {
     const [fixDate, setFixDate] = useState(new Date());
     const [value, setValue] = useState();
     const navigate = useNavigate()
+
+    useEffect(() => {
+        document.title = "Work Nest | AboutUs"
+        Aos.init()
+    }, [])
 
     const handleForm = e => {
         e.preventDefault()
@@ -61,12 +69,12 @@ const AddJobPage = () => {
         // navigate('/myPostedJobs')
     }
     return (
-        <div>
-            <div className="mt-24 text-center mb-10 md:mb-2">
-                <p className="dms text-4xl mb-3">Add a Job</p>
-                <p className="text-sm font-roboto container mx-auto">Create and Share a Job Listing to Find Your Ideal Candidate: Post Open Roles, Reach Qualified Talent, and Discover Skilled Professionals Ready to Join Your Team—All in Just a Few Steps</p>
+        <div className="mb-24">
+            <div className="mt-16 text-center mb-10 md:mb-7">
+                <p data-aos="fade-right" className="dms text-5xl text-[#de5353] mb-5">Add a Job</p>
+                <p data-aos="fade-left" className="text-sm font-roboto container mx-auto">Create and Share a Job Listing to Find Your Ideal Candidate: Post Open Roles, Reach Qualified Talent, and Discover Skilled Professionals Ready to Join Your Team—All in Just a Few Steps</p>
             </div>
-            <div className='flex justify-center items-center min-h-[calc(100vh-306px)] mb-12'>
+            <div data-aos="zoom-in-up" className='flex justify-center items-center min-h-[calc(100vh-306px)] mb-12'>
                 <section className=' p-2 md:p-6 mx-auto bg-white rounded-md shadow-md '>
 
                     <form onSubmit={handleForm}>
@@ -105,8 +113,9 @@ const AddJobPage = () => {
                                         className='border p-2 rounded-md'
                                     >
                                         <option value='On Site'>On Site</option>
-                                        <option value='Graphics Design'>Graphics Design</option>
-                                        <option value='Digital Marketing'>Digital Marketing</option>
+                                        <option value='Remote'>Remote</option>
+                                        <option value='Part-Time'>Part-Time</option>
+                                        <option value='Hybrid'>Hybrid</option>
                                     </select>
                                 </div>
                             </div>
@@ -188,9 +197,17 @@ const AddJobPage = () => {
                             ></textarea>
                         </div>
                         <div className='flex justify-end mt-6'>
-                            <button className='px-8 py-2.5 leading-5 text-white transition-colors duration-300 transhtmlForm bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'>
+                            {/* <button className='px-8 py-2.5 leading-5 text-white transition-colors duration-300 transhtmlForm bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'>
                                 Save
-                            </button>
+                            </button> */}
+                            <a href="#_" class="relative inline-block text-lg group">
+                                <span class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-[#de5353] rounded-lg group-hover:text-white">
+                                    <span class="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
+                                    <span class="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-[#de5353] group-hover:-rotate-180 ease"></span>
+                                    <span class="relative">Save</span>
+                                </span>
+                                <span class="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-[#de5353] rounded-lg group-hover:mb-0 group-hover:mr-0" data-rounded="rounded-lg"></span>
+                            </a>
                         </div>
                     </form>
                 </section>

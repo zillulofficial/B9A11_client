@@ -13,6 +13,7 @@ import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import AboutUsDetails from './Pages/AboutUsDetails/AboutUsDetails';
 import AddJobPage from './Pages/AddJobPage/AddJobPage';
+import Contacts from './Pages/ContactUs/Contacts';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path:'/addJob',
         element:<AddJobPage></AddJobPage>
+      },
+      {
+        path: '/contactUs',
+        element: <Contacts></Contacts>
       }
     ]
   },

@@ -1,11 +1,11 @@
-import Aos from 'aos'
 import { useEffect } from 'react';
+import Aos from 'aos'
 import 'aos/dist/aos.css'
 import { Link } from "react-router-dom";
 
 const FAQ = () => {
     useEffect(() => {
-        document.title = "Work Nest | AboutUs"
+        // document.title = "Work Nest | AboutUs"
         Aos.init()
     }, [])
 
@@ -16,7 +16,7 @@ const FAQ = () => {
                 <p className="mt-4 font-roboto text-[#7e7e7e]">JobSync's FAQ Section Covers Everything You Need to Know for a Seamless Experience—From Setting Up
                     Your Profile to Posting Jobs<br className="hidden lg:block" /> and Tracking Applications.</p>
             </div>
-            <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-2 gap-4 w-[1300px] mx-auto mb-12">
+            <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:w-[1300px] mx-auto mb-12">
                 <div className="collapse collapse-arrow mb-1 border p-3">
                     <input type="radio" name="my-accordion-2" />
                     <div className="collapse-title text-xl font-medium font-roboto">How do I create a profile on JobSync?</div>

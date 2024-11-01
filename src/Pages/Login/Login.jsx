@@ -5,17 +5,24 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { TbBrandGithubFilled } from "react-icons/tb";
 import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const Login = () => {
+    useEffect(() => {
+        document.title = "JobSync | Login"
+        Aos.init()
+    }, [])
+
     const { login, googleLogIn, facebookLogIn, githubLogIn, user, loader } = useAuth()
     const navigate = useNavigate()
     const location = useLocation()
     const from = location?.state || '/';
-    useEffect(()=>{
-        if(user){
+    useEffect(() => {
+        if (user) {
             navigate('/')
         }
-    },[])
+    }, [])
 
     const [showPassword, setShowPassword] = useState(false)
     const handleSubmit = e => {
@@ -79,14 +86,14 @@ const Login = () => {
                             <Link to='/register'><p className=' text-lg font-roboto'>Register</p></Link>
                         </div>
                     </div>
-                    <div>
+                    <div data-aos="fade-right">
                         <h1 className="mt-4 text-[26px] text-[#111111] font-bold font-roboto mb-2">Log In</h1>
                         <p className='text-lg font-roboto text-[#646464]'>Log in to continue in our website</p>
                     </div>
                 </div>
 
                 {/* input fields */}
-                <div className="mt-8 lg:w-1/2 lg:mt-0 mx-auto">
+                <div data-aos="fade-right" className="mt-8 lg:w-1/2 lg:mt-0 mx-auto">
                     <form onSubmit={handleSubmit} className="w-full lg:max-w-xl">
                         <div className="form-control relative flex items-center">
                             <input type="email" name="email" placeholder="Email address" className="block w-full py-3 text-gray-700 bg-white border-b-[1px]" />
@@ -121,14 +128,14 @@ const Login = () => {
 
                         {/* Social Icons */}
                         <div className='lg:w-1/2 mx-auto flex items-center justify-center gap-3 '>
-                                    <p onClick={() => handleSocialSignIn(githubLogIn)} className='bg-[#00ccee] w-10 h-10 rounded-full flex items-center justify-center hover:cursor-pointer hover:border hover:border-[#00ccee] hover:bg-white duration-300'><TbBrandGithubFilled className='text-white text-xl hover:text-[#00ccee]'></TbBrandGithubFilled></p>
-                                    <p onClick={() => handleSocialSignIn(googleLogIn)} className='text-white  font-bold rounded-full duration-300 bg-[#cc3333] w-10 h-10 flex items-center justify-center hover:text-[#cc3333] hover:cursor-pointer hover:border hover:border-[#cc3333] hover:bg-white'>G+</p>
-                                    <p onClick={() => handleSocialSignIn(facebookLogIn)} className='text-white text-xl font-bold rounded-full duration-300 bg-[#3b5998] w-10 h-10 flex items-center justify-center hover:text-[#3b5998] hover:cursor-pointer hover:border hover:border-[#3b5998] hover:bg-white'>f</p>
+                            <p onClick={() => handleSocialSignIn(githubLogIn)} className='bg-[#00ccee] w-10 h-10 rounded-full flex items-center justify-center hover:cursor-pointer hover:border hover:border-[#00ccee] hover:bg-white duration-300'><TbBrandGithubFilled className='text-white text-xl hover:text-[#00ccee]'></TbBrandGithubFilled></p>
+                            <p onClick={() => handleSocialSignIn(googleLogIn)} className='text-white  font-bold rounded-full duration-300 bg-[#cc3333] w-10 h-10 flex items-center justify-center hover:text-[#cc3333] hover:cursor-pointer hover:border hover:border-[#cc3333] hover:bg-white'>G+</p>
+                            <p onClick={() => handleSocialSignIn(facebookLogIn)} className='text-white text-xl font-bold rounded-full duration-300 bg-[#3b5998] w-10 h-10 flex items-center justify-center hover:text-[#3b5998] hover:cursor-pointer hover:border hover:border-[#3b5998] hover:bg-white'>f</p>
                         </div>
                     </form>
                 </div>
             </div>
-            <div className='flex-1'>
+            <div data-aos="fade-left" className='flex-1'>
                 {/* picture part */}
                 <img className='w-full' src="https://i.postimg.cc/NfhNbmwq/login.jpg" alt="" />
             </div>

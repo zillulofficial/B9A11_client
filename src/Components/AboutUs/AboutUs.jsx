@@ -1,9 +1,16 @@
+import { useEffect } from "react";
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const AboutUs = () => {
+    useEffect(() => {
+        // document.title = "JobSync | About Us"
+        Aos.init()
+    }, [])
     return (
         <div className="max-w-[1185px] mx-auto pt-12 mb-24">
         <div className="lg:flex">
-            <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] lg:w-1/2">
+            <div data-aos="fade-right" className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] lg:w-1/2">
                 <div className="max-w-xl">
                     <h2 className="text-3xl font-semibold lg:text-4xl">Discover Your Next Career at <span className="text-[#de5353]">JobSync</span></h2>
 
@@ -16,7 +23,7 @@ const AboutUs = () => {
                 </div>
             </div>
 
-            <div className="w-full h-64 lg:w-2/3 lg:h-auto md:h-[650px]">
+            <div data-aos="fade-left" className="w-full h-64 lg:w-2/3 lg:h-auto md:h-[650px]">
                 <div className="w-full h-full bg-cover bg-[url(https://i.postimg.cc/fTBkQpVK/bg2.jpg)]">
                     <div className="w-full h-full opacity-25"></div>
                 </div>

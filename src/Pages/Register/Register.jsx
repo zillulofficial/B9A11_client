@@ -6,8 +6,15 @@ import { IoPersonSharp } from "react-icons/io5";
 import { FaCamera } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const Register = () => {
+    useEffect(() => {
+        document.title = "JobSync | Register"
+        Aos.init()
+    }, [])
+
     const [showPassword, setShowPassword] = useState(false)
     const { createUser, user, setUser, updateUserProfile, loader } = useAuth()
     const navigate = useNavigate()
@@ -70,14 +77,14 @@ const Register = () => {
                             <Link to='/register'><p className='text-[#ff0000] text-lg font-roboto'>Register</p></Link>
                         </div>
                     </div>
-                    <div>
+                    <div data-aos="fade-right">
                         <h1 className="mt-4 text-[26px] text-[#111111] font-bold font-roboto mb-2">Register</h1>
                         <p className='text-lg font-roboto text-[#646464]'>Create an account free and enjoy it</p>
                     </div>
                 </div>
 
                 {/* input fields */}
-                <div className="mt-8 lg:w-1/2 lg:mt-0 mx-auto">
+                <div data-aos="fade-right" className="mt-8 lg:w-1/2 lg:mt-0 mx-auto">
                     <form onSubmit={handleSubmit} className=" w-full lg:max-w-xl">
                         <div className="form-control relative flex items-center mb-4">
                             <input type="name" name="name" placeholder="Name" className="block w-full py-3 text-gray-700 bg-white border-b-[1px]" />
@@ -133,7 +140,7 @@ const Register = () => {
                     </form>
                 </div>
             </div>
-            <div className='flex-1'>
+            <div data-aos="fade-left" className='flex-1'>
                 {/* picture part */}
                 <img className='w-full' src="https://i.postimg.cc/1RVCpM2r/registration.jpg" alt="" />
             </div>

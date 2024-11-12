@@ -6,7 +6,7 @@ const axiosSecure = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
     withCredentials: true
 })
-const UseAxiosSecure = () => {
+const useAxiosSecure = () => {
     const { logout } = useAuth()
     const navigate = useNavigate()
 
@@ -27,4 +27,4 @@ const UseAxiosSecure = () => {
     return axiosSecure
 };
 
-export default UseAxiosSecure;
+export default useAxiosSecure;

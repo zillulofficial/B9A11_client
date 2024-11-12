@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TbCurrencyTaka } from "react-icons/tb";
+import useAuth from '../../Hooks/useAuth';
 
 const JobCard = ({ job }) => {
+    
     return (
         <div>
             <Link to={`/job/${job._id}`}>

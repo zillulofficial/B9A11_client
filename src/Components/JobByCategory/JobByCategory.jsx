@@ -16,7 +16,7 @@ const JobByCategory = () => {
         axios.get(`${import.meta.env.VITE_API_URL}/jobs`)
         .then(res=>setJobs(res.data))
     }, [])
-    console.log(jobs);
+    // console.log(jobs);
     return (
         <div className='max-w-[1300px] mx-auto mb-24'>
             <div>

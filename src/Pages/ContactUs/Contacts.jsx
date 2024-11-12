@@ -1,10 +1,15 @@
 import useAuth from "../../Hooks/useAuth";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Contacts = () => {
 
     const { user } = useAuth()
     const handleContact = e => {
         e.preventDefault()
+        toast.success("concerns on console log", {
+                    position: "top-center"
+                })
         const form = e.target
         const email= form.email.value
         const category= form.category.value
@@ -53,6 +58,7 @@ const Contacts = () => {
                     <button className="bg-[#ff3811] text-white px-5 py-3 rounded-xl btn">Submit</button>
                 </form>
             </div>
+            <ToastContainer />
         </div>
     );
 };

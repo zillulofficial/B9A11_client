@@ -67,7 +67,7 @@ const AddJobPage = () => {
         }
         )
 
-        navigate('/myPostedJobs')
+        navigate('/myJobs')
     }
     return (
         <div className="mb-24">

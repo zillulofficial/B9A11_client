@@ -49,7 +49,7 @@ const JobCard = ({ job }) => {
                         </div>
                     </div>
                 </div>
-            </Link>
+        </Link>
         </div>
     );
 };

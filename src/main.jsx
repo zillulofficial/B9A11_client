@@ -18,6 +18,8 @@ import ViewJobDetails from './Pages/ViewJobDetails/ViewJobDetails';
 import PrivateRoute from './Routes/PrivateRoute';
 import MyJobPage from './Pages/MyJobPage/MyJobPage';
 import UpdateJobPage from './Pages/UpdateJobPage/UpdateJobPage';
+import AppliedJobPage from './Pages/AppliedJobPage/AppliedJobPage';
+import AllJobsPage from './Pages/AllJobsPage/AllJobsPage';
 
 const router = createBrowserRouter([
   {
@@ -46,8 +48,12 @@ const router = createBrowserRouter([
         element:<PrivateRoute><AddJobPage></AddJobPage></PrivateRoute>
       },
       {
-        path:'/myPostedJobs',
+        path:'/myJobs',
         element:<PrivateRoute><MyJobPage></MyJobPage></PrivateRoute>
+      },
+      {
+        path:'/appliedJobs',
+        element:<PrivateRoute><AppliedJobPage></AppliedJobPage></PrivateRoute>
       },
       {
         path: '/update/:id',
@@ -62,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: '/contactUs',
         element: <Contacts></Contacts>
+      },
+      {
+        path: '/allJobs',
+        element: <AllJobsPage></AllJobsPage>
       }
     ]
   },

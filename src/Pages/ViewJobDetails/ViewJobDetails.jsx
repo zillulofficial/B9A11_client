@@ -35,6 +35,7 @@ const ViewJobDetails = () => {
         }
         const jobId = job._id
         const title = job.title
+        const PhotoURL= job.jobPhotoURL
         const category = job.category
         const price = parseFloat(form.price.value)
         if (price < parseFloat(job.min_price) || price > parseFloat(job.max_price)) {
@@ -57,6 +58,7 @@ const ViewJobDetails = () => {
             comment,
             deadline,
             title,
+            PhotoURL,
             category,
             email,
             status,

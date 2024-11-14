@@ -75,7 +75,7 @@ const ViewJobDetails = () => {
                         icon: 'success',
                         confirmButtonText: 'Okay'
                     })
-                    navigate('/')
+                    navigate('/appliedJobs')
                 }
             })
             .catch(function (error) {

@@ -48,10 +48,10 @@ const AppliedJobPage = () => {
                     className='border p-4 rounded-lg'
                 >
                     <option value=''>Filter By Category</option>
-                    <option value='Web Development'>On Site</option>
-                    <option value='Graphics Design'>Remote</option>
-                    <option value='Digital Marketing'>Part-Time</option>
-                    <option value='Graphics Design'>Hybrid</option>
+                    <option value='On Site'>On Site</option>
+                    <option value='Remote'>Remote</option>
+                    <option value='DPart-Time'>Part-Time</option>
+                    <option value='Hybrid'>Hybrid</option>
                 </select>
             </div>
             <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-16 mb-8">

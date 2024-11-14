@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import JobCard from "../../Components/JobCard/JobCard";
+import { Link } from "react-router-dom";
 
 const AllJobsPage = () => {
     const [jobs, setJobs] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [count, setCount] = useState(0)
-    const [itemsPerPage, setItemsPerPage] = useState(4)
+    const [itemsPerPage, setItemsPerPage] = useState(5)
     const [filter, setFilter] = useState('')
     const [sort, setSort] = useState('')
     const [search, setSearch] = useState('')
@@ -62,9 +63,10 @@ const AllJobsPage = () => {
                             className='border p-4 rounded-lg'
                         >
                             <option value=''>Filter By Category</option>
-                            <option value='Web Development'>Web Development</option>
-                            <option value='Graphics Design'>Graphics Design</option>
-                            <option value='Digital Marketing'>Digital Marketing</option>
+                            <option value='On Site'>On Site</option>
+                            <option value='Remote'>Remote</option>
+                            <option value='Part-Time'>Part-Time</option>
+                            <option value='Hybrid'>Hybrid</option>
                         </select>
                     </div>
 
@@ -106,148 +108,119 @@ const AllJobsPage = () => {
 
                 {/* all jobs section */}
                 <div className="mb-24">
-                    <div className="mt-16 text-center mb-10 md:mb-7">
-                        <p data-aos="fade-right" className="dms text-5xl text-[#de5353] mb-5">Add a Job</p>
-                        <p data-aos="fade-left" className="text-sm font-roboto container mx-auto">Create and Share a Job Listing to Find Your Ideal Candidate: Post Open Roles, Reach Qualified Talent, and Discover Skilled Professionals Ready to Join Your Team—All in Just a Few Steps</p>
-                    </div>
-                    <div data-aos="zoom-in-up" className='flex justify-center items-center min-h-[calc(100vh-306px)] mb-12'>
-                        <section className=' p-2 md:p-6 mx-auto bg-white rounded-md shadow-md '>
+                    <section className='container px-4 mx-auto pt-12'>
+                        <div className='flex items-center gap-x-3'>
+                            <h2 className='text-lg font-medium text-gray-800 '>All Jobs</h2>
 
-                            <form onSubmit={handleForm}>
-                                <div className="flex flex-col md:flex-row md:gap-6 justify-between">
-                                    <div>
-                                        <div className="mb-6 pt-4">
-                                            <label className='text-gray-700 ' htmlFor='jobPhotoURL'>
-                                                Job PhotoURL
-                                            </label>
-                                            <input
-                                                id='jobPhotoURL'
-                                                name='jobPhotoURL'
-                                                type='text'
-                                                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-                                            />
-                                        </div>
-                                        <div className="mb-6">
-                                            <label className='text-gray-700 ' htmlFor='job_title'>
-                                                Job Title
-                                            </label>
-                                            <input
-                                                id='job_title'
-                                                name='job_title'
-                                                type='text'
-                                                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-                                            />
-                                        </div>
+                            <span className='px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full '>
+                                {jobs.length} Jobs
+                            </span>
+                        </div>
 
-                                        <div className='flex flex-col gap-2 mb-6'>
-                                            <label className='text-gray-700 ' htmlFor='category'>
-                                                Category
-                                            </label>
-                                            <select
-                                                name='category'
-                                                id='category'
-                                                className='border p-2 rounded-md'
-                                            >
-                                                <option value='On Site'>On Site</option>
-                                                <option value='Remote'>Remote</option>
-                                                <option value='Part-Time'>Part-Time</option>
-                                                <option value='Hybrid'>Hybrid</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
-                                            <div>
-                                                <label className='text-gray-700 ' htmlFor='displayName'>
-                                                    UserName
-                                                </label>
-                                                <input
-                                                    id='displayName'
-                                                    name='displayName'
-                                                    defaultValue={user?.displayName}
-                                                    type='text'
-                                                    className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-                                                />
-                                            </div>
+                        <div className='flex flex-col mt-6'>
+                            <div className='-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
+                                <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
+                                    <div className='overflow-hidden border border-gray-200  md:rounded-lg'>
+                                        <table className='min-w-full divide-y divide-gray-200'>
+                                            <thead className='bg-gray-50'>
+                                                <tr>
+                                                    <th
+                                                        scope='col'
+                                                        className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                                    >
+                                                        <div className='flex items-center gap-x-3'>
+                                                            <span>Title</span>
+                                                        </div>
+                                                    </th>
 
-                                            <div>
-                                                <label className='text-gray-700 ' htmlFor='emailAddress'>
-                                                    Email Address
-                                                </label>
-                                                <input
-                                                    id='emailAddress'
-                                                    type='email'
-                                                    name='email'
-                                                    disabled
-                                                    defaultValue={user?.email}
-                                                    className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-                                                />
-                                            </div>
-                                            <div className='flex flex-col gap-2 '>
-                                                <label className='text-gray-700'>Deadline</label>
+                                                    <th
+                                                        scope='col'
+                                                        className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                                    >
+                                                        Applied
+                                                    </th>
+                                                    <th
+                                                        scope='col'
+                                                        className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                                    >
+                                                        <span>Deadline</span>
+                                                    </th>
 
-                                                {/* Date Picker Input Field */}
-                                                <DatePicker className="border p-2 w-full rounded-md" selected={startDate} onChange={(date) => setStartDate(date)} />
-                                            </div>
+                                                    <th
+                                                        scope='col'
+                                                        className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                                    >
+                                                        <button className='flex items-center gap-x-2'>
+                                                            <span>Price Range</span>
+                                                        </button>
+                                                    </th>
 
-                                            <div className='flex flex-col gap-2'>
-                                                <label className='text-gray-700 ' htmlFor='postingDate'>
-                                                    Posting Date
-                                                </label>
-                                                <DatePicker className="border p-2 w-full rounded-md" name="postingDate" selected={fixDate} />
-                                            </div>
-                                            <div>
-                                                <label className='text-gray-700 ' htmlFor='min_price'>
-                                                    Minimum Price
-                                                </label>
-                                                <input
-                                                    id='min_price'
-                                                    name='min_price'
-                                                    type='number'
-                                                    className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-                                                />
-                                            </div>
+                                                    <th
+                                                        scope='col'
+                                                        className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                                    >
+                                                        Category
+                                                    </th>
 
-                                            <div>
-                                                <label className='text-gray-700 ' htmlFor='max_price'>
-                                                    Maximum Price
-                                                </label>
-                                                <input
-                                                    id='max_price'
-                                                    name='max_price'
-                                                    type='number'
-                                                    className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-                                                />
-                                            </div>
-                                        </div>
+                                                    <th className=' flex justify-center px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'>
+                                                        Edit
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className='bg-white divide-y divide-gray-200 '>
+                                                {
+                                                    jobs.map(data => <tr key={data._id}>
+                                                        <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
+                                                            {data.title}
+                                                        </td>
+                                                        <td
+                                                            title=''
+                                                            className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'
+                                                        >
+                                                            {new Date(data.postingDate).toLocaleDateString()}
+                                                        </td>
+
+                                                        <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
+                                                            {new Date(data.deadline).toLocaleDateString()}
+                                                        </td>
+
+                                                        <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
+                                                            ${data.min_price}-${data.max_price}
+                                                        </td>
+                                                        <td className='px-4 py-4 text-sm whitespace-nowrap'>
+                                                            <div className='flex items-center gap-x-2'>
+                                                                <p
+                                                                    className={`px-3 py-1 ${data.category === 'On Site' && 'text-lime-500 bg-lime-100/60'
+                                                                        } ${data.category === 'Remote' && 'text-orange-500 bg-orange-100/60'
+                                                                        } ${data.category === 'Part-Time' && 'text-teal-500 bg-teal-100/60'
+                                                                        } ${data.category === 'Hybrid' && 'text-pink-500 bg-pink-100/60'
+                                                                        } rounded-full text-xs
+                                                            `}
+                                                                >
+                                                                    {data.category}
+                                                                </p>
+                                                            </div>
+                                                        </td>
+                                                        <td className='px-4 py-4 text-sm whitespace-nowrap'>
+                                                            <div className='flex items-center justify-center gap-x-6'>
+                                                                <Link to={`/job/${data._id}`} class="relative inline-flex items-center justify-center p-4 px-4 py-2 overflow-hidden font-medium text-[#de5353] transition duration-300 ease-out border-2 border-[#de5353] rounded-full shadow-md group">
+                                                                    <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-[#de5353] group-hover:translate-x-0 ease">
+                                                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                                                    </span>
+                                                                    <span class="absolute flex items-center justify-center w-full h-full text-[#de5353] transition-all duration-300 transform group-hover:translate-x-full ease">View Details</span>
+                                                                    <span class="relative invisible">View Details</span>
+                                                                </Link>
+                                                            </div>
+                                                        </td>
+                                                    </tr>)
+                                                }
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-                                <div className='flex flex-col gap-2 '>
-                                    <label className='text-gray-700 ' htmlFor='description'>
-                                        Description
-                                    </label>
-                                    <textarea
-                                        className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-                                        name='description'
-                                        id='description'
-                                    ></textarea>
-                                </div>
-                                <div className='flex justify-end mt-6'>
-                                    {/* <button className='px-8 py-2.5 leading-5 text-white transition-colors duration-300 transhtmlForm bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'>
-                                Save
-                            </button> */}
-                                    <button class="relative inline-block text-lg group">
-                                        <span class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-[#de5353] rounded-lg group-hover:text-white">
-                                            <span class="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
-                                            <span class="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-[#de5353] group-hover:-rotate-180 ease"></span>
-                                            <span class="relative">Save</span>
-                                        </span>
-                                        <span class="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-[#de5353] rounded-lg group-hover:mb-0 group-hover:mr-0" data-rounded="rounded-lg"></span>
-                                    </button>
-                                </div>
-                            </form>
-                        </section>
-                    </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
 

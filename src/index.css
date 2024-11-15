@@ -64,3 +64,31 @@
   transform: scale(1.09);
   /* Controls the zoom level */
 }
+
+/* Zoom Image CSS */
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+.image-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.158); /* Adjust the opacity here for the darkness */
+}
+
+.zoom-image {
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-container:hover .zoom-image {
+  transform: scale(1.09);
+  /* Controls the zoom level */
+}

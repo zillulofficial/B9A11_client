@@ -33,7 +33,7 @@ const AppliedJobPage = () => {
     // console.log(bids);
     return (
         <div className="mb-24">
-            <div className="mt-16 text-center mb-10 md:mb-10">
+            <div className="mt-16 text-center mb-10 md:mb-10 ">
                 <p data-aos="fade-right" className="dms text-5xl text-rose-900 mb-5">Jobs You Applied</p>
                 <p data-aos="fade-left" className="text-sm font-roboto container mx-auto">Stay on Top of Your Career Journey: Review, Track, and Manage All Your Applied Jobs in One Place to Monitor Your Progress and Opportunities.</p>
             </div>
@@ -45,7 +45,7 @@ const AppliedJobPage = () => {
                     value={filter}
                     name='category'
                     id='category'
-                    className='border p-4 rounded-lg'
+                    className='border p-4 rounded-lg hover:cursor-pointer'
                 >
                     <option value=''>Filter By Category</option>
                     <option value='On Site'>On Site</option>

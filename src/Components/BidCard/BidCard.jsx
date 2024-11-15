@@ -15,7 +15,7 @@ const BidCard = ({ bid }) => {
         <div className="mx-auto">
             <div className="card h-[480px] bg-base-100 w-96 shadow-xl hover:scale-[.95] duration-200 transition-all ease-in">
                 <figure>
-                    <img
+                    <img 
                         src={bid.PhotoURL}
                         alt="Shoes" />
                 </figure>

@@ -5,13 +5,12 @@ import Aos from "aos";
 import 'aos/dist/aos.css'
 import BidCard from "../../Components/BidCard/BidCard";
 import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
-import MyDocument from "../../Components/MyDocument/MyDocument";
+import MyDoc from "../../Components/MyDocument/MyDoc";
 
 const AppliedJobPage = () => {
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
     const [bids, setBids] = useState([])
-    const [currentPage, setCurrentPage] = useState(1)
     const [filter, setFilter] = useState('')
 
     useEffect(() => {
@@ -27,11 +26,9 @@ const AppliedJobPage = () => {
     const fetchData = () => {
         axiosSecure.get(`/myBids/${user?.email}?filter=${filter}`)
             .then(res => {
-                // console.log(data);
                 setBids(res.data)
             })
     }
-    // console.log(bids);
     return (
         <div className="mb-24">
             <div className="mt-16 text-center mb-10 md:mb-10 ">
@@ -60,16 +57,14 @@ const AppliedJobPage = () => {
                     bids.map(bid => <BidCard key={bid._id} bid={bid}></BidCard>)
                 }
             </div>
-            {/* <div className="mb-10">
-                <PDFViewer height={760} width={1200}>
-                    <MyDocument />
-                </PDFViewer>
-                <PDFDownloadLink document={<MyDocument />} fileName="example.pdf">
-                    {({ blob, url, loading, error }) =>
-                        loading ? 'Loading document...' : 'Download now!'
+            <div className="mb-10 mt-10">
+                <PDFDownloadLink document={<MyDoc />} fileName="Form.pdf">
+                    {({ loading }) =>
+                        loading ? <button className="btn flex mx-auto">Loading PDF...</button> : <button className="btn flex mx-auto">Download PDF</button>
                     }
                 </PDFDownloadLink>
-            </div> */}
+                <MyDoc/>
+            </div>
         </div>
     );
 };

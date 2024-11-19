@@ -3,22 +3,25 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const MyJobPage = () => {
-    const axiosSecure= useAxiosSecure()
+    const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
-    const [allData, setAllData] = useState([])
 
-    useEffect(() => {
-        fetchData()
+    const { data: allData = [], isLoading, refetch, isError, error } = useQuery({
+        queryFn: () => fetchData(),
+        queryKey: ['jobs:email']
 
-    }, [user])
+    })
+    console.log(allData);
 
     const fetchData = () => {
-        axiosSecure.get(`/jobs/${user?.email}`)
+        const data = axiosSecure.get(`/jobs/${user?.email}`)
             .then(res => {
-                setAllData(res.data)
+                return (res.data)
             })
+        return data
     }
 
     const handleDelete = id => {
@@ -50,6 +53,12 @@ const MyJobPage = () => {
 
         })
 
+    }
+    if (isLoading) {
+        return <span className="loading loading-bars loading-lg text-[#1abc9c] text-center h-[500px] flex items-center mx-auto"></span>
+    }
+    if (isError || error) {
+        console.log(isError, error);
     }
     return (
         <div className="mb-24">

@@ -4,6 +4,8 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Aos from "aos";
 import 'aos/dist/aos.css'
 import BidCard from "../../Components/BidCard/BidCard";
+import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
+import MyDocument from "../../Components/MyDocument/MyDocument";
 
 const AppliedJobPage = () => {
     const axiosSecure = useAxiosSecure()
@@ -58,6 +60,16 @@ const AppliedJobPage = () => {
                     bids.map(bid => <BidCard key={bid._id} bid={bid}></BidCard>)
                 }
             </div>
+            {/* <div className="mb-10">
+                <PDFViewer height={760} width={1200}>
+                    <MyDocument />
+                </PDFViewer>
+                <PDFDownloadLink document={<MyDocument />} fileName="example.pdf">
+                    {({ blob, url, loading, error }) =>
+                        loading ? 'Loading document...' : 'Download now!'
+                    }
+                </PDFDownloadLink>
+            </div> */}
         </div>
     );
 };

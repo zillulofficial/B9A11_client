@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import JobCard from "../../Components/JobCard/JobCard";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const AllJobsPage = () => {
     const [jobs, setJobs] = useState([])
@@ -12,13 +13,39 @@ const AllJobsPage = () => {
     const [sort, setSort] = useState('')
     const [search, setSearch] = useState('')
     const [searchText, setSearchText] = useState('')
+    // const { data: jobs = [] } = useQuery({
+    //     queryFn: () => fetchData({currentPage, itemsPerPage, filter, sort, search}),
+    //     queryKey: ['jobs']
 
+    // })
+    // const { data: count = [0] } = useQuery({
+    //     queryFn: () => fetchCount({filter, search}),
+    //     queryKey: ['count']
+
+    // })
+
+    // const fetchData = ({currentPage, itemsPerPage, filter, sort, search}) => {
+    //     const data = axios.get(`${import.meta.env.VITE_API_URL}/allJobs?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&sort=${sort}&search=${search}`)
+    //         .then(res => {
+    //             return (res.data)
+    //         })
+    //     return data
+    // }
+    // const fetchCount = () => {
+    //     const data = axios.get(`${import.meta.env.VITE_API_URL}/jobsCount?filter=${filter}&search=${search}`)
+    //         .then(res => {
+    //             return(res.data.count)
+    //         })
+    //     return data
+    // }
+    // console.log(count);
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_API_URL}/allJobs?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&sort=${sort}&search=${search}`)
             .then(res => {
                 setJobs(res.data)
             })
     }, [currentPage, itemsPerPage, filter, sort, search])
+
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_API_URL}/jobsCount?filter=${filter}&search=${search}`)
             .then(res => {
@@ -109,7 +136,7 @@ const AllJobsPage = () => {
                 {/* all jobs section */}
                 <div className="mb-24">
                     <section className='container px-4 mx-auto pt-12'>
-                        
+
 
                         <div className='flex flex-col mt-6'>
                             <div className='-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>

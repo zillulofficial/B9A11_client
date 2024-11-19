@@ -21,6 +21,8 @@ import UpdateJobPage from './Pages/UpdateJobPage/UpdateJobPage';
 import AppliedJobPage from './Pages/AppliedJobPage/AppliedJobPage';
 import AllJobsPage from './Pages/AllJobsPage/AllJobsPage';
 import Blogs from './Pages/Blogs/Blogs';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 const router = createBrowserRouter([
   {
@@ -41,20 +43,20 @@ const router = createBrowserRouter([
         element: <Register></Register>
       },
       {
-        path:'/aboutUs',
-        element:<AboutUsDetails></AboutUsDetails>
+        path: '/aboutUs',
+        element: <AboutUsDetails></AboutUsDetails>
       },
       {
-        path:'/addJob',
-        element:<PrivateRoute><AddJobPage></AddJobPage></PrivateRoute>
+        path: '/addJob',
+        element: <PrivateRoute><AddJobPage></AddJobPage></PrivateRoute>
       },
       {
-        path:'/myJobs',
-        element:<PrivateRoute><MyJobPage></MyJobPage></PrivateRoute>
+        path: '/myJobs',
+        element: <PrivateRoute><MyJobPage></MyJobPage></PrivateRoute>
       },
       {
-        path:'/appliedJobs',
-        element:<PrivateRoute><AppliedJobPage></AppliedJobPage></PrivateRoute>
+        path: '/appliedJobs',
+        element: <PrivateRoute><AppliedJobPage></AppliedJobPage></PrivateRoute>
       },
       {
         path: '/update/:id',
@@ -82,10 +84,15 @@ const router = createBrowserRouter([
   },
 ]);
 
+
+const queryClient = new QueryClient()
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </AuthProvider>
   </StrictMode>,
 )

@@ -4,7 +4,6 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Aos from "aos";
 import 'aos/dist/aos.css'
 import BidCard from "../../Components/BidCard/BidCard";
-import axios from "axios";
 
 const AppliedJobPage = () => {
     const axiosSecure = useAxiosSecure()
@@ -21,10 +20,10 @@ const AppliedJobPage = () => {
     useEffect(() => {
         fetchData()
 
-    }, [user])
+    }, [user, filter])
 
     const fetchData = () => {
-        axiosSecure.get(`/myBids/${user?.email}`)
+        axiosSecure.get(`/myBids/${user?.email}?filter=${filter}`)
             .then(res => {
                 // console.log(data);
                 setBids(res.data)

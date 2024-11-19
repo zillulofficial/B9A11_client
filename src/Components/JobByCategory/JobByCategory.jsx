@@ -13,7 +13,7 @@ const JobByCategory = () => {
     const [jobs, setJobs]= useState([])
 
     useEffect(()=>{
-        axios.get(`${import.meta.env.VITE_API_URL}/jobs`)
+        axios.get(`${import.meta.env.VITE_API_URL}/jobs`, {withCredentials: true})
         .then(res=>setJobs(res.data))
     }, [])
     // console.log(jobs);

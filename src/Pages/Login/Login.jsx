@@ -61,20 +61,17 @@ const Login = () => {
             .then(result => {
                 if (result.user) {
                     console.log(result.user)
-                    // axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {email: result?.user?.email})
-                    // .then(res=>{
-                    //     console.log(res.data);
-                    // })
+                    
                     navigate(from)
                 }
             })
             .catch(error => console.log(error))
     }
     return (
-        <div className='min-h-screen flex justify-center items-center'>
+        <div className='md:min-h-screen flex justify-center items-center pt-10 md:mt-0 mb-10 md:mb-0'>
             {/* content part */}
             <div className="flex-1">
-                <div className="lg:w-1/2 mb-12 mx-auto">
+                <div className="lg:w-1/2 md:mb-12 mx-auto">
                     <div className='flex justify-between'>
                         <div className='flex items-center mb-20'>
                             <img className='w-auto h-14 text-primary hover:cursor-pointer' src='https://i.postimg.cc/GhML5xqS/webLogo.png' alt='' />
@@ -135,7 +132,7 @@ const Login = () => {
                     </form>
                 </div>
             </div>
-            <div data-aos="fade-left" className='flex-1'>
+            <div data-aos="fade-left" className='flex-1 hidden md:block'>
                 {/* picture part */}
                 <img className='w-full' src="https://i.postimg.cc/NfhNbmwq/login.jpg" alt="" />
             </div>

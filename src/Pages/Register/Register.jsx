@@ -62,7 +62,7 @@ const Register = () => {
     }
     // if(user || loader) return
     return (
-        <div className='min-h-screen flex justify-center items-center'>
+        <div className='md:min-h-screen flex justify-center items-center pt-10 md:mt-0 mb-10 md:mb-0'>
             {/* content part */}
             <div className="flex-1">
                 <div className="lg:w-1/2 mb-12 mx-auto">
@@ -131,16 +131,10 @@ const Register = () => {
                             </button>
                         </div>
 
-                        {/* Social Icons */}
-                        {/* <div className='lg:w-1/2 mx-auto flex items-center justify-center gap-3 '>
-                                    <p className='bg-[#00ccee] w-10 h-10 rounded-full flex items-center justify-center hover:cursor-pointer hover:border hover:border-[#00ccee] hover:bg-white duration-300'><TbBrandGithubFilled className='text-white text-xl hover:text-[#00ccee]'></TbBrandGithubFilled></p>
-                                    <p className='text-white  font-bold rounded-full duration-300 bg-[#cc3333] w-10 h-10 flex items-center justify-center hover:text-[#cc3333] hover:cursor-pointer hover:border hover:border-[#cc3333] hover:bg-white'>G+</p>
-                                    <p className='text-white text-xl font-bold rounded-full duration-300 bg-[#3b5998] w-10 h-10 flex items-center justify-center hover:text-[#3b5998] hover:cursor-pointer hover:border hover:border-[#3b5998] hover:bg-white'>f</p>
-                        </div> */}
                     </form>
                 </div>
             </div>
-            <div data-aos="fade-left" className='flex-1'>
+            <div data-aos="fade-left" className='flex-1 hidden md:block'>
                 {/* picture part */}
                 <img className='w-full' src="https://i.postimg.cc/1RVCpM2r/registration.jpg" alt="" />
             </div>

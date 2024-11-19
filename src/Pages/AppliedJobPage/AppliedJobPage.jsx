@@ -30,7 +30,7 @@ const AppliedJobPage = () => {
             })
     }
     return (
-        <div className="mb-24">
+        <div className="mb-16">
             <div className="mt-16 text-center mb-10 md:mb-10 ">
                 <p data-aos="fade-right" className="dms text-5xl text-rose-900 mb-5">Jobs You Applied</p>
                 <p data-aos="fade-left" className="text-sm font-roboto container mx-auto">Stay on Top of Your Career Journey: Review, Track, and Manage All Your Applied Jobs in One Place to Monitor Your Progress and Opportunities.</p>
@@ -57,13 +57,12 @@ const AppliedJobPage = () => {
                     bids.map(bid => <BidCard key={bid._id} bid={bid}></BidCard>)
                 }
             </div>
-            <div className="mb-10 mt-10">
+            <div className=" mt-10">
                 <PDFDownloadLink document={<MyDoc />} fileName="Form.pdf">
                     {({ loading }) =>
                         loading ? <button className="btn flex mx-auto">Loading PDF...</button> : <button className="btn flex mx-auto">Download PDF</button>
                     }
                 </PDFDownloadLink>
-                <MyDoc/>
             </div>
         </div>
     );

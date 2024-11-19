@@ -96,11 +96,11 @@ const Blogs = () => {
                         </div>
                     </div>
                 </div>
-                <div className='w-[900px] mx-auto border-b pb-20 mb-16 flex justify-center items-center'>
+                <div className='lg:w-[900px] mx-auto border-b pb-20 mb-16 flex flex-col lg:flex-row justify-center items-center'>
                         <img className='w-96' src="https://i.postimg.cc/hP3trZzB/Pngtree-3d-alphabet-letter-j-design-5877829.png" alt="" />
                         <div className='text-center'>
                             <p className='text-primary'>Explore our facility</p>
-                            <p className='text-3xl mb-4'>Simplifying Your Job Search Journey</p>
+                            <p className='lg:text-3xl mb-4'>Simplifying Your Job Search Journey</p>
                             <p className='text-[#777777]'>JobSync connects job seekers and employers effortlessly. Discover opportunities, track applications, and streamline your job search journey in one user-friendly platform.</p>
                         </div>
                 </div>
